@@ -63,7 +63,7 @@ import {NotImplementComponent} from './components/not-implement/not-implement.co
     PromptBoxComponent,
     ZEmptyPipe,
     DurationFormatHMSPipe,
-    NotImplementComponent
+    NotImplementComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

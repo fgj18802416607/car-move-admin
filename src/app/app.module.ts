@@ -14,6 +14,8 @@ import {EntryComponent} from './entry/entry.component';
 import {initializer} from './initializer';
 import * as Raven from 'raven-js';
 import {environment} from '../environments/environment';
+import {LoginModule} from "./login/login.module";
+import { ManagementComponent } from './management/management.component';
 
 registerLocaleData(zh);
 
@@ -46,6 +48,7 @@ export class RavenErrorHandler implements ErrorHandler {
 @NgModule({
   declarations: [
     EntryComponent,
+    ManagementComponent,
     AppComponent],
   imports: [
     BrowserModule,
@@ -54,7 +57,8 @@ export class RavenErrorHandler implements ErrorHandler {
     HttpClientModule,
     NgZorroAntdModule,
     AppRoutingModule,
-    ShareModule
+    ShareModule,
+    LoginModule
   ],
   providers: [{provide: NZ_I18N, useValue: zh_CN},
     {provide: APP_INITIALIZER, useFactory: initializer.boot, multi: true},

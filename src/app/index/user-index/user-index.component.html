@@ -1,0 +1,16 @@
+<div id="menu">
+  <nz-collapse>
+    <nz-collapse-panel *ngFor="let panel of panels" [nzHeader]="panel.name" [nzActive]="panel.active" [nzDisabled]="panel.disabled">
+      <p class="index" routerLink="indexContent" [routerLinkActive]="['btn-active']">首页</p>
+    </nz-collapse-panel>
+  </nz-collapse>
+</div>
+<div id="content">
+  <div id="tittle">
+    <span class="tittle">首页内容</span>
+    <button class="refresh" (click)="onRefresh()">刷新</button>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import {GlobalService} from './core/global.service';
 import {DateFormatHelper} from '../utils/date-format-helper';
 import {PromptBoxComponent} from './share/components/tips/prompt-box/prompt-box.component';
 import {ConfirmationBoxComponent} from './share/components/tips/confirmation-box/confirmation-box.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('routerDiv') public routerDiv: ElementRef;
 
   constructor(private globalService: GlobalService,
-              public authService: AuthService) {
+              public authService: AuthService,
+              private router: Router) {
     DateFormatHelper.NowBlock = () => {
       return new Date(globalService.timeStamp * 1000);
     };
@@ -35,8 +37,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public onLogoutDivClick() {
     this.globalService.confirmationBox.open('是否退出系统？', () => {
+      localStorage.clear();
+      this.router.navigate(['/login']);
       this.globalService.confirmationBox.close();
-      this.authService.logout();
+      // this.authService.logout();
     });
   }
 }
